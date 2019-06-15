@@ -1,25 +1,26 @@
-// read express module
+// expressモジュールを読み込む
 const express = require('express');
 
-// create express ap
+// expressアプリを生成する
 const app = express();
 
-// Webフォルダの中身を公開する
+// webフォルダの中身を公開する
 app.use(express.static('web'));
 
-// when you access route(http://localhost/), respond with TODO list
+// http://localhost:3000/api/v1/list にアクセスしてきたときに
+// TODOリストを返す
 app.get('/api/v1/list', (req, res) => {
     // クライアントに送るJSONデータ
-    const todolist = [
+    const todoList = [
         { title: 'JavaScriptを勉強する', done: true },
         { title: 'Node.jsを勉強する', done: false },
         { title: 'Web APIを作る', done: false }
     ];
 
-    //JSONを送信する
-    res.json(todolist);
+    // JSONを送信する
+    res.json(todoList);
 });
 
-// build a server with port:3000
+// ポート3000でサーバを立てる
 app.listen(3000, () => console.log('Listening on port 3000'));
 
